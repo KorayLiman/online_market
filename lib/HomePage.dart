@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slider_indicator/flutter_slider_indicator.dart';
+import 'package:online_market/DetailsPage.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -53,7 +54,7 @@ class _HomePageState extends State<HomePage> {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Anasayfa"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.category), label: "Kategori"),
+              icon: Icon(Icons.category), label: "Kategoriler"),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: "Ara"),
           BottomNavigationBarItem(
               icon: Icon(Icons.discount), label: "Fırsatlar"),
@@ -161,15 +162,29 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      height: 100,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(6),
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                  "https://ayb.akinoncdn.com/products/2021/06/18/7827/73061620-37a9-444e-9d8d-1442ea2c1178_size780x780_quality60_cropCenter.jpg"),
-                              fit: BoxFit.fill),
-                          border: Border.all(width: 1, color: Colors.grey)),
+                    Hero(
+                      tag: "anim",
+                      child: GestureDetector(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DetailsPage(
+                                  ItemName: "Elma",
+                                  ItemCost: "10.99 TL",
+                                  ImageUrl:
+                                      "https://ayb.akinoncdn.com/products/2021/06/18/7827/73061620-37a9-444e-9d8d-1442ea2c1178_size780x780_quality60_cropCenter.jpg"),
+                            )),
+                        child: Container(
+                          height: 100,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                      "https://ayb.akinoncdn.com/products/2021/06/18/7827/73061620-37a9-444e-9d8d-1442ea2c1178_size780x780_quality60_cropCenter.jpg"),
+                                  fit: BoxFit.fill),
+                              border: Border.all(width: 1, color: Colors.grey)),
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(4.0),
